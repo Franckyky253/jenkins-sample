@@ -16,7 +16,7 @@ node () {
  				bat "mvn clean package " 
 			} 
  		}		// Maven build step
-	withMaven(maven: 'maven') { 
+	withSonarQubeEnv('Sonar') { 
  			if(isUnix()) {
  				sh "mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=7759368c48da4212a0db90da321327dd" 
 			} else { 
