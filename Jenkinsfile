@@ -17,5 +17,14 @@ node () {
 			} 
  		} 
 	}
+	stage ('App-IC - Sonar') {
+ 			withMaven(maven: 'maven') { 
+ 			if(isUnix()) {
+ 				sh "mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=7759368c48da4212a0db90da321327dd " 
+			} else { 
+ 				bat "mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=7759368c48da4212a0db90da321327dd" 
+			} 
+ 		} 
+	}
 }
 }
